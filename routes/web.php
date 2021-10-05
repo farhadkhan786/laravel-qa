@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcceptAnswerController;
 use App\Http\Controllers\AnswersController;
 use App\Http\Controllers\QuestionsController;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,4 @@ Route::resource('questions', QuestionsController::class)->except('show');
 //Route::post('/questions/{question}/answers', 'AnswersController@store')->name('answers.store');
 Route::resource('questions.answers', AnswersController::class)->only(['store', 'edit', 'update', 'destroy']);
 Route::get('/questions/{slug}', [QuestionsController::class,'show'])->name('questions.show');
+Route::post('/answers/{answer}/accept', AcceptAnswerController::class)->name('answers.accept');
