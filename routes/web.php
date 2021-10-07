@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcceptAnswerController;
 use App\Http\Controllers\AnswersController;
 use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\FavouritesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,5 @@ Route::resource('questions', QuestionsController::class)->except('show');
 Route::resource('questions.answers', AnswersController::class)->only(['store', 'edit', 'update', 'destroy']);
 Route::get('/questions/{slug}', [QuestionsController::class,'show'])->name('questions.show');
 Route::post('/answers/{answer}/accept', AcceptAnswerController::class)->name('answers.accept');
+Route::post('/questions/{question}/favourites', [FavouritesController::class, 'store'])->name('questions.favourite');
+Route::delete('/questions/{question}/favourites', [FavouritesController::class, 'destroy'])->name('questions.unfavourite');
