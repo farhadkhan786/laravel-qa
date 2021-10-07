@@ -10,13 +10,30 @@
                 @foreach ($answers as $answer)
                     <div class="media">
                         <div class="d-fex flex-column vote-controls">
-                            <a title="This answer is useful" class="vote-up">
+                            <a title="This answer is useful" class="vote-up {{ \Illuminate\Support\Facades\Auth::guest() ? 'off' : '' }}"
+                               onclick="event.preventDefault(); document.getElementById('up-vote-answer-{{ $answer->id }}').submit();"
+                            >
                                 <i class="fas fa-caret-up fa-3x"></i>
                             </a>
-                            <span class="votes-count">1230</span>
-                            <a title="This answer is not useful" class="vote-down off">
+
+                            <form id="up-vote-answer-{{ $answer->id }}" action="/answers/{{ $answer->id }}/vote" method="post" style="display:none">
+                                @csrf
+                                <input type="hidden" name="vote" value="1">
+                            </form>
+
+                            <span class="votes-count">{{ $answer->votes_count }}</span>
+
+                            <a title="This answer is not useful"
+                               class="vote-down {{ \Illuminate\Support\Facades\Auth::guest() ? 'off' : '' }}"
+                               onclick="event.preventDefault(); document.getElementById('down-vote-answer-{{ $answer->id }}').submit();"
+                            >
                                 <i class="fas fa-caret-down fa-3x"></i>
                             </a>
+
+                            <form id="down-vote-answer-{{ $answer->id }}" action="/answers/{{ $answer->id }}/vote" method="post" style="display:none">
+                                @csrf
+                                <input type="hidden" name="vote" value="-1">
+                            </form>
                             @can('accept', $answer)
                                 <a title="Mark this answer as best answer"
                                     class="{{ $answer->status }} mt-2"
