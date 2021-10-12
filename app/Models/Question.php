@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class Question extends Model
 {
+    use VotableTrait;
     use HasFactory;
 
     protected $fillable = ['title', 'body'];
@@ -66,9 +67,5 @@ class Question extends Model
 
     public function getFavouratesCountAttribute () {
         return $this->favourites->count();
-    }
-
-    public function votes () {
-        return $this->morphToMany(User::class, 'votable');
     }
 }
