@@ -6,6 +6,7 @@ use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\FavouritesController;
 use App\Http\Controllers\VoteAnswerController;
 use App\Http\Controllers\voteQuestionController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [QuestionsController::class, 'index']);
 
 Auth::routes();
 

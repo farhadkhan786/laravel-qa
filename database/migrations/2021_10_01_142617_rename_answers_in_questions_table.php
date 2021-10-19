@@ -14,10 +14,7 @@ class RenameAnswersInQuestionsTable extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->foreign('best_answer_id')
-                ->references('id')
-                ->on('answers')
-                ->onDelete('SET NULL');
+            $table->renameColumn('answers', 'answers_count');
         });
     }
 
