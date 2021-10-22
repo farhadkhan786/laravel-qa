@@ -27,10 +27,6 @@ export default {
 
         endpoint () {
             return `/questions/${this.id }/favourites`;
-        },
-
-        signedIn () {
-            return window.Auth.signedIn;
         }
     },
 
