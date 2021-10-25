@@ -28,7 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('questions', QuestionsController::class)->except('show');
 //Route::post('/questions/{question}/answers', 'AnswersController@store')->name('answers.store');
-Route::resource('questions.answers', AnswersController::class)->only(['store', 'edit', 'update', 'destroy']);
+Route::resource('questions.answers', AnswersController::class)->except(['create', 'show']);
 Route::get('/questions/{slug}', [QuestionsController::class,'show'])->name('questions.show');
 Route::post('/answers/{answer}/accept', AcceptAnswerController::class)->name('answers.accept');
 Route::post('/questions/{question}/favourites', [FavouritesController::class, 'store'])->name('questions.favourite');
