@@ -7,14 +7,24 @@ use App\Models\Question;
 
 class voteQuestionController extends Controller
 {
-    public function __construct () {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
-    public function __invoke (Question $question) {
-        $vote = (int) request()->vote;
+    public function __invoke(Question $question)
+    {
 
-        auth()->user()->voteQuestion($question, $vote);
-        return back();
+        $vote = (int)request()->vote;
+
+        $votesCount = auth()->user()->voteQuestion($question, $vote);
+
+        if (\request()->expectsJson()) {
+            return response()->json([
+                'message' => 'Thanks for the feedback',
+                'votesCount' => $votesCount
+            ]);
+        }
+            return back();
+        }
     }
-}
