@@ -15,9 +15,6 @@ import Authorization from './authorization/authorize';
 
 Vue.use(VueIziToast);
 Vue.use(Authorization);
-// Vue.use(Authorization);
-// Vue.use(Authorization);
-
 
 /**
  * The following block of code may be used to automatically register your
