@@ -15,6 +15,7 @@ import Authorization from './authorization/authorize';
 
 Vue.use(VueIziToast);
 Vue.use(Authorization);
+// Vue.use(Authorization);
 
 
 /**
