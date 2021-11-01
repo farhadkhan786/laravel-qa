@@ -4727,7 +4727,7 @@ __webpack_require__.r(__webpack_exports__);
       return "/questions/".concat(this.questionId, "/answers/").concat(this.id);
     },
     uniqueName: function uniqueName() {
-      return "answer-".concat(this.id, ";");
+      return "answer-".concat(this.id);
     }
   }
 });

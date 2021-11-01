@@ -82,7 +82,7 @@ export default {
         },
 
         uniqueName () {
-            return `answer-${this.id};`
+            return `answer-${this.id}`;
         }
     }
 }
