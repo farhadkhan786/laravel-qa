@@ -9,7 +9,9 @@
                     <hr>
                     <form @submit.prevent="create">
                         <div class="form-group">
-                            <textarea name="body" id="" cols="" rows="7" required v-model="body" class="form-control"></textarea>
+                            <m-editor :body="body" name="new-answer">
+                                <textarea name="body" id="" cols="" rows="7" required v-model="body" class="form-control"></textarea>
+                            </m-editor>
                         </div>
                         <div class="form-group">
                             <button :disabled="isInvalid" class="btn btn-lg btn-outline-primary">Submit</button>
@@ -22,8 +24,11 @@
 </template>
 
 <script>
+import MEditor from "./MEditor";
 export default {
     props: ['questionId'],
+
+    components: {MEditor},
 
     methods: {
         create () {
