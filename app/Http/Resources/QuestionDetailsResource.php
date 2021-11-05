@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class QuestionResource extends JsonResource
+class QuestionDetailsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,15 +16,15 @@ class QuestionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->id . '-' . $this->slug,
-            'slug' => $this->slug,
+            'title' => $this->title,
             'votes_count' => $this->votes_count,
             'answers_count' => $this->answers_count,
-            'views' => $this->views,
-            'status' => $this->status,
-            'excerpt' => $this->excerpt,
-            'created_date' => $this->created_date,
+            'is_favirited' => $this->is_favirited,
+            'favorites_count' => $this->favorites_count,
+            'body' => $this->body,
+            'body_html' => $this->body_html,
             'user' => new UserResource($this->user),
+            'created_date' => $this->created_date,
         ];
     }
 }
